@@ -1,0 +1,33 @@
+{
+  "name": "hapi-fields",
+  "version": "0.1.0",
+  "description": "Partial responses",
+  "dependencies": {
+    "json-mask": "^0.3.0"
+  },
+  "devDependencies": {
+    "hapi": "^6.1.0",
+    "lab": "^3.2.1"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/lab"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/silas/hapi-partial.git"
+  },
+  "keywords": [
+    "partial-response",
+    "filter",
+    "mask",
+    "select",
+    "fields",
+    "partial"
+  ],
+  "author": "Silas Sewell <silas@sewell.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/silas/hapi-partial/issues"
+  },
+  "homepage": "https://github.com/silas/hapi-partial"
+}
