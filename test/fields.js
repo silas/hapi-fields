@@ -5,7 +5,13 @@
  */
 
 var hapi = require('hapi');
-var lab = require('lab');
+
+/**
+ * Lab.
+ */
+
+var lab = exports.lab = require('lab').script();
+var expect = require('lab').expect;
 
 /**
  * Plugin.
@@ -21,14 +27,9 @@ lab.experiment('fields', function() {
       method: 'GET',
       path: '/',
       handler: function(request, reply) {
-        lab.expect(request.query).to.eql({
-          one: 'two',
-        });
+        expect(request.query).not.to.have.property('fields');
 
-        reply({
-          hello: 'jane',
-          bye: 'john',
-        });
+        reply({ hello: 'jane', bye: 'john' });
       },
     });
 
@@ -38,7 +39,7 @@ lab.experiment('fields', function() {
   lab.test('return full response', function(done) {
     server.inject('/', function(res) {
 
-      lab.expect(res.result).to.eql({
+      expect(res.result).to.eql({
         hello: 'jane',
         bye: 'john',
       });
@@ -50,7 +51,7 @@ lab.experiment('fields', function() {
   lab.test('return full response with extra query parameters', function(done) {
     server.inject('/?one=two', function(res) {
 
-      lab.expect(res.result).to.eql({
+      expect(res.result).to.eql({
         hello: 'jane',
         bye: 'john',
       });
@@ -62,7 +63,7 @@ lab.experiment('fields', function() {
   lab.test('return partial response', function(done) {
     server.inject('/?one=two&fields=hello', function(res) {
 
-      lab.expect(res.result).to.eql({
+      expect(res.result).to.eql({
         hello: 'jane',
       });
 
