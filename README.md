@@ -15,7 +15,8 @@ Options
 ``` javascript
 var hapi = require('hapi');
 
-var server = new hapi.Server(8000);
+var server = new hapi.Server();
+server.connection({ port: 8000 });
 
 server.route({
   method: 'GET',
@@ -25,7 +26,7 @@ server.route({
   },
 });
 
-server.pack.register({ plugin: require('hapi-fields') }, function(err) {
+server.register({ register: require('hapi-fields') }, function(err) {
   if (err) throw err;
 });
 

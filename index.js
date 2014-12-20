@@ -15,21 +15,21 @@ function register(server, options, next) {
 
   options.name = options.name || 'fields';
 
-  server.ext('onPostAuth', function(request, next) {
+  server.ext('onPostAuth', function(request, reply) {
     if (request.query && request.query.hasOwnProperty(options.name)) {
       request._fields = request.query[options.name];
       delete request.query[options.name];
     }
 
-    next();
+    reply.continue();
   });
 
-  server.ext('onPreResponse', function(request, next) {
+  server.ext('onPreResponse', function(request, reply) {
     if (request._fields && request.response.variety === 'plain' && request.response.source) {
       request.response.source = mask(request.response.source, request._fields);
     }
 
-    next();
+    reply.continue();
   });
 
   next();
@@ -41,6 +41,7 @@ function register(server, options, next) {
 
 register.attributes = {
   pkg: require('./package.json'),
+  name: 'hapi-fields',
 };
 
 /**

@@ -22,6 +22,7 @@ lab.experiment('fields', function() {
 
   lab.before(function(done) {
     server = new hapi.Server();
+    server.connection();
 
     server.route({
       method: 'GET',
@@ -33,7 +34,7 @@ lab.experiment('fields', function() {
       },
     });
 
-    server.pack.register({ plugin: require('..') }, done);
+    server.register({ register: require('..') }, done);
   });
 
   lab.test('return full response', function(done) {

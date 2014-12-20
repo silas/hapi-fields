@@ -1,12 +1,12 @@
 {
   "name": "hapi-fields",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Partial responses",
   "dependencies": {
-    "json-mask": "^0.3.0"
+    "json-mask": "^0.3.2"
   },
   "devDependencies": {
-    "hapi": "^6.1.0",
+    "hapi": "^8.0.0",
     "lab": "^4.0.2"
   },
   "scripts": {
