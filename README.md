@@ -1,4 +1,4 @@
-# Hapi Fields
+# Hapi Fields [![Build Status](https://travis-ci.org/silas/hapi-fields.png?branch=master)](https://travis-ci.org/silas/hapi-fields)
 
 This module adds [partial response][partial-response] support to Hapi.
 

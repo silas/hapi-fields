@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+var expect = require('code').expect;
 var hapi = require('hapi');
 
 /**
@@ -11,7 +12,6 @@ var hapi = require('hapi');
  */
 
 var lab = exports.lab = require('lab').script();
-var expect = require('lab').expect;
 
 /**
  * Plugin.
@@ -28,7 +28,7 @@ lab.experiment('fields', function() {
       method: 'GET',
       path: '/',
       handler: function(request, reply) {
-        expect(request.query).not.to.have.property('fields');
+        expect(request.query).not.to.include('fields');
 
         reply({ hello: 'jane', bye: 'john' });
       },
@@ -40,7 +40,7 @@ lab.experiment('fields', function() {
   lab.test('return full response', function(done) {
     server.inject('/', function(res) {
 
-      expect(res.result).to.eql({
+      expect(res.result).to.deep.equal({
         hello: 'jane',
         bye: 'john',
       });
@@ -52,7 +52,7 @@ lab.experiment('fields', function() {
   lab.test('return full response with extra query parameters', function(done) {
     server.inject('/?one=two', function(res) {
 
-      expect(res.result).to.eql({
+      expect(res.result).to.deep.equal({
         hello: 'jane',
         bye: 'john',
       });
@@ -64,7 +64,7 @@ lab.experiment('fields', function() {
   lab.test('return partial response', function(done) {
     server.inject('/?one=two&fields=hello', function(res) {
 
-      expect(res.result).to.eql({
+      expect(res.result).to.deep.equal({
         hello: 'jane',
       });
 
