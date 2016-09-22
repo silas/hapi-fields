@@ -40,7 +40,7 @@ lab.experiment('fields', function() {
   lab.test('return full response', function(done) {
     server.inject('/', function(res) {
 
-      expect(res.result).to.deep.equal({
+      expect(res.result).to.equal({
         hello: 'jane',
         bye: 'john',
       });
@@ -52,7 +52,7 @@ lab.experiment('fields', function() {
   lab.test('return full response with extra query parameters', function(done) {
     server.inject('/?one=two', function(res) {
 
-      expect(res.result).to.deep.equal({
+      expect(res.result).to.equal({
         hello: 'jane',
         bye: 'john',
       });
@@ -64,7 +64,7 @@ lab.experiment('fields', function() {
   lab.test('return partial response', function(done) {
     server.inject('/?one=two&fields=hello', function(res) {
 
-      expect(res.result).to.deep.equal({
+      expect(res.result).to.equal({
         hello: 'jane',
       });
 

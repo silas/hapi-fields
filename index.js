@@ -16,7 +16,8 @@ function register(server, options, next) {
   options.name = options.name || 'fields';
 
   server.ext('onPostAuth', function(request, reply) {
-    if (request.query && request.query.hasOwnProperty(options.name)) {
+    if (request.query &&
+        Object.prototype.hasOwnProperty.call(request.query, options.name)) {
       request._fields = request.query[options.name];
       delete request.query[options.name];
     }

@@ -1,14 +1,14 @@
 {
   "name": "hapi-fields",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Partial responses",
   "dependencies": {
-    "json-mask": "^0.3.2"
+    "json-mask": "^0.3.8"
   },
   "devDependencies": {
-    "code": "^1.3.0",
-    "hapi": "^8.0.0",
-    "lab": "^5.2.1"
+    "code": "^4.0.0",
+    "hapi": "^15.0.3",
+    "lab": "^11.0.1"
   },
   "scripts": {
     "test": "./node_modules/.bin/lab"
